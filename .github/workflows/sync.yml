@@ -1,0 +1,39 @@
+name: Sync Repos
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v3
+
+      - name: Push to destination repository
+        run: |
+          # 1. Setup Identity
+          git config --global user.email "muhammadumer5689@gmail.com"
+          git config --global user.name "mumerdevops"
+
+          # 2. Clone the backup repo
+          git clone "https://x-access-token:${{ secrets.PAT }}@github.com/mumerdevops/backup-project.git" backup-dir
+          cd backup-dir
+
+          # 3. Add the main project as source
+          git remote add source-repo "https://x-access-token:${{ secrets.PAT }}@github.com/mumerdevops/main-project.git"
+          git fetch source-repo
+
+          # 4. THE FIX: Force the backup branch to match source-repo/main exactly
+          # This deletes the conflicting local history and replaces it with the source history
+          git checkout main
+          git reset --hard source-repo/main
+
+          # 5. Force push to the backup repo
+          # We use --force because we changed the history to match the source
+          git push origin main --force
+        env:
+          PAT: ${{ secrets.PAT }}
