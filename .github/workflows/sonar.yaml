@@ -20,8 +20,8 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -Dsonar.projectKey=main-project
-            -Dsonar.projectName=main-project
+            -Dsonar.projectKey=node-mysql-app
+            -Dsonar.projectName=node-mysql-app
             -Dsonar.sources=.
 
       - name: Wait for Analysis
@@ -30,7 +30,7 @@ jobs:
       - name: Download Report from API
         run: |
           curl -u "${{ secrets.SONAR_TOKEN }}:" \
-          "${{ secrets.SONAR_HOST_URL }}/api/qualitygates/project_status?projectKey=main-project" \
+          "${{ secrets.SONAR_HOST_URL }}/api/qualitygates/project_status?projectKey=node-mysql-app" \
           -o sonar-report.json
 
       - name: Save Report as Artifact
