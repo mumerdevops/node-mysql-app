@@ -26,4 +26,4 @@ jobs:
         with:
           context: . # Uses the current directory as build context
           push: true # Pushes image to the registry
-          tags: ${{ secrets.DOCKER_USERNAME }}/your-image-name:latest # Tags the image
+          tags: ${{ secrets.DOCKER_USERNAME }}/node-mysql-app:latest # Tags the image
