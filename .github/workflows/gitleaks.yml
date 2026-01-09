@@ -1,20 +1,16 @@
-name: Secret Scan - Gitleaks
+name: Secret Scan - detect-secrets
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
+on: [pull_request]
 
 jobs:
-  gitleaks:
+  detect-secrets:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0   # IMPORTANT: allows scanning git history
+      - uses: actions/checkout@v4
 
-      - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install detect-secrets
+        run: pip install detect-secrets
+
+      - name: Run detect-secrets
+        run: detect-secrets scan --baseline .secrets.baseline
+
