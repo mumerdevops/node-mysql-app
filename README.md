@@ -60,3 +60,4 @@ You can find the ready-to-use image here:
 * **Troubleshooting included:** It mentions the `host-gateway` trick which was the key to fixing your network errors.
 
 **Would you like me to show you how to add this file to your GitHub repository using the terminal?**
+MY_KEY=AKIAIMNOJVYJ2EXAMPLE
