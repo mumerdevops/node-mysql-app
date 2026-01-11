@@ -64,4 +64,4 @@ You can find the ready-to-use image here:
 # My Project
 This is a test project.
 
-AWS_KEY="AKIAIO5FODNN7EXAMPLE"
+MY_AWS_KEY=AKIAIMNOJVYJ2EXAMPLE
