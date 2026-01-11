@@ -1,28 +1,12 @@
-name: Gitleaks Scan
-
-on:
-  pull_request:
-  push:
-    branches: [main, master]
-  workflow_dispatch: # Allows manual triggering
-
+name: Gitleaks
+on: [push, pull_request] # Har push par chalay ga
 jobs:
-  scan:
-    name: Gitleaks
+  gitleaks:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          # fetch-depth: 0 is REQUIRED for gitleaks to scan 
-          # the entire history of the branch/PR
           fetch-depth: 0
-
-      - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v2
+      - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          # Optional: point to a custom config file
-          # config-path: .gitleaks.toml
-          fail-on-leak: true
