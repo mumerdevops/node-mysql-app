@@ -54,10 +54,9 @@ docker run --name my-node-app \
 | **GET** | `/delete/:id` | Deletes a user by ID |
 
 ## 🐳 Docker Hub
-
+MY_TOKEN=ghp_11223344556677889900AABBCCDDEEFFGGHH
 You can find the ready-to-use image here:
 `docker pull mumer423/my-node-app:v1`
 * **Troubleshooting included:** It mentions the `host-gateway` trick which was the key to fixing your network errors.
 
 **Would you like me to show you how to add this file to your GitHub repository using the terminal?**
-DEEP_SECRET=github_pat_11AABBSCC0011223344556677889900aabbccddeeffgghh_SampleToken
