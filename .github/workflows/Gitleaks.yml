@@ -6,11 +6,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Poori history download karne ke liye
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # Yeh line Gitleaks ko kahegi ke poori history check kare
-          args: --verbose --redact
+          # '--all' force karega ke poori file aur history scan ho
+          args: --verbose --redact --all
           fail-on-leak: true
