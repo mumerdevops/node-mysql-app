@@ -1,5 +1,5 @@
 name: Gitleaks
-on: [push, pull_request] # Har push par chalay ga
+on: [push, pull_request]
 jobs:
   gitleaks:
     runs-on: ubuntu-latest
@@ -10,3 +10,7 @@ jobs:
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Yeh line Gitleaks ko kahegi ke poori history check kare
+          args: --verbose --redact
+          fail-on-leak: true
