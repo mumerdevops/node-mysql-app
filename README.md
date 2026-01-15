@@ -58,5 +58,4 @@ MY_TOKEN=ghp_11223344556677889900AABBCCDDEEFFGGHH
 MY_TOKEN=ghp_11223344556677889900AABBCCDDEEFHFJHB
 You can find the ready-to-use image here:
 `docker pull mumer423/my-node-app:v1`
-* **Troubleshooting included:** It mentions the `host-gateway` trick which was the key to fixing your network errors.
 
